@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  postgres-p:
+    image: postgres:latest
+    container_name: postgres-p
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    ports:
+      - "5430:5432"
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  postgres-tp:
+    image: postgres:latest
+    container_name: postgres-tp
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: tpdb
+    ports:
+      - "5431:5432"
+    volumes:
+      - ./third-party/db/init.sql:/docker-entrypoint-initdb.d/init.sql
