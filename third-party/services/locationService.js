@@ -1,8 +1,7 @@
 import dbService from "./dbService.js";
 
 const postLocation = async (location) => {
-  //const dbResponse = await dbService.postLocation(location);
-  const dbResponse = dbService.postLocation(location);
+  const dbResponse = await dbService.postLocation(location);
 
   if (!dbResponse) {
     console.log("Failed to insert location into database.\n");
@@ -16,8 +15,7 @@ const postLocation = async (location) => {
 };
 
 const getLocations = async () => {
-  //const locations = await dbService.getLocations();
-  const locations = dbService.getLocations();
+  const locations = await dbService.getLocations();
 
   if (!locations) {
     console.log("Failed to retrieve locations from table.\n");
@@ -30,8 +28,7 @@ const getLocations = async () => {
 };
 
 const getLocationById = async (id) => {
-  //const location = await dbService.getLocationById(id);
-  const location = dbService.getLocationById(id);
+  const location = await dbService.getLocationById(id);
 
   if (!location) {
     console.log("Failed to retrieve location from table.\n");
