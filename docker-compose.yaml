@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
-  postgres-p:
+  p-postgres:
     image: postgres:latest
-    container_name: postgres-p
+    container_name: p-postgres
     restart: always
     environment:
       POSTGRES_USER: user
@@ -14,9 +14,9 @@ services:
     volumes:
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
 
-  postgres-tp:
+  tp-postgres:
     image: postgres:latest
-    container_name: postgres-tp
+    container_name: tp-postgres
     restart: always
     environment:
       POSTGRES_USER: user
@@ -27,17 +27,36 @@ services:
     volumes:
       - ./third-party/db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
-  api:
-    build: ./third-party  # Path to your API's Dockerfile
+  tp-api:
+    build: ./third-party
     container_name: tp-api
     restart: always
     environment:
-      POSTGRES_HOST: postgres-tp  # Connects to postgres-tp
+      POSTGRES_HOST: tp-postgres
       POSTGRES_PORT: 5432
       POSTGRES_DB: tpdb
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
     depends_on:
-      - postgres-tp
+      - tp-postgres
     ports:
-      - "3007:3007"  # Maps container port to host
+      - "3007:3007"
+
+  gql-api:
+    build: ./graphql-api
+    container_name: gql-api
+    restart: always
+    environment:
+      POSTGRES_HOST: p-postgres
+      TP_API_HOST: tp-api
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: mydb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    depends_on:
+      - p-postgres
+      - tp-api
+    ports:
+      - "4000:4000"
+
+# TODO: add health checks

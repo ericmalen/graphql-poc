@@ -29,10 +29,10 @@ export const schema = createSchema({
     Query: {
       locations: async () => {
         try {
-          let locations = await axios.get("http://localhost:3007/locations");
+          let locations = await axios.get(`http://${process.env.TP_API_HOST}:3007/locations`);
           return locations.data;
         } catch (err) {
-          throw new Error(`Failed to fetch user: ${err.message}`);
+          throw new Error(`Failed to fetch location: ${err.message}`);
         }
       },
       users: async () => {
