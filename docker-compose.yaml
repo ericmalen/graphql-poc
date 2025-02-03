@@ -26,3 +26,18 @@ services:
       - "5431:5432"
     volumes:
       - ./third-party/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  api:
+    build: ./third-party  # Path to your API's Dockerfile
+    container_name: tp-api
+    restart: always
+    environment:
+      POSTGRES_HOST: postgres-tp  # Connects to postgres-tp
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: tpdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    depends_on:
+      - postgres-tp
+    ports:
+      - "3007:3007"  # Maps container port to host
