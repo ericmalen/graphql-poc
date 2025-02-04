@@ -5,7 +5,7 @@ const UserTypes = /* GraphQL */ `
     first_name: String!
     last_name: String!
     city: String!
-    province: String!
+    state: String!
     country: String!
     location_id: Int!
     handicap: Float!
@@ -16,7 +16,7 @@ const UserTypes = /* GraphQL */ `
     first_name: String!
     last_name: String!
     city: String!
-    province: String!
+    state: String!
     country: String!
     location_id: Int!
     handicap: Float!
@@ -26,7 +26,7 @@ const UserTypes = /* GraphQL */ `
     first_name: String
     last_name: String
     city: String
-    province: String
+    state: String
     country: String
     location_id: Int
     handicap: Float
