@@ -3,7 +3,7 @@ import userService from "../../../db/services/userService.js";
 const userQueries = {
   users: async (_, args) => {
     try {
-      let users = userService.getUsers();
+      let users = await userService.getUsers();
       return users;
     } catch (err) {
       throw new Error(`Failed to fetch user: ${err.message}`);
@@ -11,8 +11,8 @@ const userQueries = {
   },
   user: async (_, { id }) => {
     try {
-      let user = userService.getUserById(id);
-      return user;
+      let res = await userService.getUserById(id);
+      return res[0];
     } catch (err) {
       throw new Error(`Failed to fetch user: ${err.message}`);
     }

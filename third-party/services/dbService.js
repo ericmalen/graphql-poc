@@ -1,9 +1,6 @@
 import sql from "../db/connection.js";
 
-const getCourses = (locationId) => {
-  if (locationId) {
-    return sql`SELECT * FROM courses WHERE location_id = ${locationId}`;
-  }
+const getCourses = () => {
   return sql`SELECT * FROM courses`;
 };
 

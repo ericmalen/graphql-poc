@@ -9,7 +9,6 @@ CREATE TABLE users (
     city VARCHAR(50) NOT NULL,
     state VARCHAR(50) NOT NULL,
     country VARCHAR(50) NOT NULL,
-    location_id INT NOT NULL,
     handicap DECIMAL(5,2) NOT NULL
 );
 
@@ -28,12 +27,12 @@ CREATE TABLE match_players (
     PRIMARY KEY (match_id, user_id)
 );
 
-INSERT INTO users (first_name, last_name, city, state, country, location_id, handicap) VALUES
-('John', 'Doe', 'Toronto', 'Ontario', 'Canada', 4, 10.5),
-('Jane', 'Smith', 'Toronto', 'Ontario', 'Canada', 4, 12.3),
-('Alice', 'Johnson', 'Vancouver', 'British Columbia', 'Canada', 1, 8.2),
-('Bob', 'Brown', 'New York', 'New York', 'USA', 2, 15.6),
-('Charlie', 'Williams', 'Los Angeles', 'California', 'USA', 3, 9.7);
+INSERT INTO users (first_name, last_name, city, state, country, handicap) VALUES
+('John', 'Doe', 'Toronto', 'Ontario', 'Canada', 10.5),
+('Jane', 'Smith', 'Toronto', 'Ontario', 'Canada', 12.3),
+('Alice', 'Johnson', 'Vancouver', 'British Columbia', 'Canada', 8.2),
+('Bob', 'Brown', 'New York', 'New York', 'USA', 15.6),
+('Charlie', 'Williams', 'Los Angeles', 'California', 'USA', 9.7);
 
 INSERT INTO matches (city, state, country, course_name, match_date) VALUES
 ('Pebble Beach', 'California', 'USA', 'Pebble Beach Golf Links', '2024-06-15'),

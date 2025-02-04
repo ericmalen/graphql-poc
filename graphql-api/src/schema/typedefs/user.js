@@ -7,7 +7,6 @@ const UserTypes = /* GraphQL */ `
     city: String!
     state: String!
     country: String!
-    location_id: Int!
     handicap: Float!
   }
 
@@ -18,7 +17,6 @@ const UserTypes = /* GraphQL */ `
     city: String!
     state: String!
     country: String!
-    location_id: Int!
     handicap: Float!
   }
 
@@ -28,7 +26,6 @@ const UserTypes = /* GraphQL */ `
     city: String
     state: String
     country: String
-    location_id: Int
     handicap: Float
   }
 `;

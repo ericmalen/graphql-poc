@@ -13,13 +13,12 @@ const postCourse = async (req, res) => {
 
 const getCourses = async (req, res) => {
   try {
-    const { location_id } = req.query;
-    const allCourses = await courseService.getCourses(location_id);
+    const allCourses = await courseService.getCourses();
     const response = structuredClone(allCourses);
     res.send(response);
   } catch (err) {
     console.log(err);
-    res.status(500).send({ error: err.message });
+    res.send({ error: err });
   }
 };
 
