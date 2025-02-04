@@ -1,11 +1,21 @@
 import sql from "../db/connection.js";
 
-const getCourses = () => {
+const getCourses = (locationId) => {
+  if (locationId) {
+    return sql`SELECT * FROM courses WHERE location_id = ${locationId}`;
+  }
   return sql`SELECT * FROM courses`;
 };
 
 const postCourse = (course) => {
-  return sql`INSERT INTO courses ${sql(course, "name", "location_id", "par", "difficulty", "holes")} RETURNING id`;
+  return sql`INSERT INTO courses ${sql(
+    course,
+    "name",
+    "location_id",
+    "par",
+    "difficulty",
+    "holes"
+  )} RETURNING id`;
 };
 
 const getCourseById = (id) => {
@@ -13,11 +23,16 @@ const getCourseById = (id) => {
 };
 
 const getLocations = () => {
-    return sql`SELECT * FROM locations`;
-  };
+  return sql`SELECT * FROM locations`;
+};
 
 const postLocation = (location) => {
-  return sql`INSERT INTO locations ${sql(location, "city", "state", "country")} RETURNING id`;
+  return sql`INSERT INTO locations ${sql(
+    location,
+    "city",
+    "state",
+    "country"
+  )} RETURNING id`;
 };
 
 const getLocationById = (id) => {

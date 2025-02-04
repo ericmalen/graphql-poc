@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS locations (
 INSERT INTO locations (city, state, country) VALUES
 ('Pebble Beach', 'California', 'USA'),
 ('Augusta', 'Georgia', 'USA'),
-('St. Andrews', 'Fife', 'Scotland');
+('St. Andrews', 'Fife', 'Scotland'),
+('Toronto', 'Ontario', 'Canada');
 
 CREATE TABLE IF NOT EXISTS courses (
     id SERIAL PRIMARY KEY,
@@ -22,4 +23,6 @@ CREATE TABLE IF NOT EXISTS courses (
 INSERT INTO courses (name, location_id, par, difficulty, holes) VALUES
 ('Pebble Beach Golf Links', 1, 72, 'Hard', 18),
 ('Augusta National Golf Club', 2, 72, 'Very Hard', 18),
-('St. Andrews Old Course', 3, 72, 'Medium', 18);
+('St. Andrews Old Course', 3, 72, 'Medium', 18),
+('a', 4, 72, 'Very Hard', 18),
+('b', 4, 72, 'Medium', 18);

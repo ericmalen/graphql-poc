@@ -1,0 +1,94 @@
+import sql from "./db/connection.js";
+import axios from "axios";
+
+import { createSchema } from "graphql-yoga";
+
+export const schema = createSchema({
+  typeDefs: /* GraphQL */ `
+    type Query {
+      locations: [Location!]!
+      users(id: Int): [User!]!
+      courses: [Course!]!
+    }
+    type Location {
+      id: ID!
+      city: String!
+      state: String
+      country: String!
+    }
+    type Course {
+      id: ID!
+      name: String!
+      location_id: Int!
+      par: Int!
+      difficulty: String!
+      holes: Int!
+    }
+    type User {
+      id: ID!
+      first_name: String!
+      last_name: String!
+      city: String!
+      province: String!
+      country: String!
+      location_id: Int!
+      handicap: Float!
+      courses_nearby: [Course!]!
+    }
+  `,
+  resolvers: {
+    Query: {
+      locations: async () => {
+        try {
+          let locations = await axios.get(
+            `http://${process.env.TP_API_HOST}:3007/locations`
+          );
+          return locations.data;
+        } catch (err) {
+          throw new Error(`Failed to fetch location: ${err.message}`);
+        }
+      },
+      users: async (_, args) => {
+        const { id } = args;
+        try {
+          if (id) {
+            let users = await sql`SELECT * FROM users WHERE id = ${id}`;
+            return users;
+          } else {
+            let users = await sql`SELECT * FROM users`;
+            return users;
+          }
+        } catch (err) {
+          throw new Error(`Failed to fetch user: ${err.message}`);
+        }
+      },
+      courses: async () => {
+        try {
+          let courses = await axios.get(
+            `http://${process.env.TP_API_HOST}:3007/courses`
+          );
+          return courses.data;
+        } catch (err) {
+          throw new Error(`Failed to fetch courses: ${err.message}`);
+        }
+      },
+    },
+    User: {
+      courses_nearby: async (parent) => {
+        try {
+          const locationId = parent.location_id;
+
+          if (!locationId) return [];
+
+          const response = await axios.get(
+            `http://${process.env.TP_API_HOST}:3007/courses?location_id=${locationId}`
+          );
+
+          return response.data;
+        } catch (err) {
+          throw new Error(`Failed to fetch courses: ${err.message}`);
+        }
+      },
+    },
+  },
+});

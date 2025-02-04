@@ -14,8 +14,8 @@ const postCourse = async (course) => {
   return dbResponse;
 };
 
-const getCourses = async () => {
-  const courses = await dbService.getCourses();
+const getCourses = async (locationId) => {
+  const courses = await dbService.getCourses(locationId);
 
   if (!courses) {
     console.log("Failed to retrieve courses from table.\n");
@@ -23,7 +23,6 @@ const getCourses = async () => {
   }
 
   console.log("Courses retrieval successful!\n");
-  
   return courses;
 };
 
@@ -36,7 +35,7 @@ const getCourseById = async (id) => {
   }
 
   console.log("Course retrieval successful!\n");
-  
+
   return course;
 };
 
