@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const locationQueries = {
   locations: async (_, args) => {
     try {

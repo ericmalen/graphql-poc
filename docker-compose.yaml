@@ -12,7 +12,7 @@ services:
     ports:
       - "5430:5432"
     volumes:
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./p-database/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   tp-postgres:
     image: postgres:latest
@@ -25,10 +25,10 @@ services:
     ports:
       - "5431:5432"
     volumes:
-      - ./third-party/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./tp-database/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   tp-api:
-    build: ./third-party
+    build: ./tp-api
     container_name: tp-api
     restart: always
     environment:
@@ -43,7 +43,7 @@ services:
       - "3007:3007"
 
   gql-api:
-    build: ./graphql-api
+    build: ./gql-api
     container_name: gql-api
     restart: always
     environment:
