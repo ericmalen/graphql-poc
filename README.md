@@ -52,8 +52,8 @@ This repository is proof of concept to test the capabilities of GraphQL Yoga. Th
 
    This command will:
 
-   - Build the Docker images for all services.
-   - Run all containers.
+   - Build the Docker images for all services
+   - Run all containers
 
 3. **Access the GraphQL Playground**:
    After the services have been deployed, you can access the GraphQL API at the following URL:
@@ -82,8 +82,8 @@ Once deployed, users can:
 
 - **Interact with the GraphQL API**:
 
-  - Access the GraphQL Playground at `http://localhost:4000/graphql` to explore and test queries and mutations.
-  - Use the `POST` method to send GraphQL queries and mutations directly to `http://localhost:4000/graphql`.
+  - Access the GraphQL Playground at `http://localhost:4000/graphql` to explore and test queries and mutations
+  - Use the `POST` method to send GraphQL queries and mutations directly to `http://localhost:4000/graphql`
 
 - **Individual Service Access**:
   If you'd like to test any individual service separately, you can access them by:
