@@ -1,6 +1,6 @@
-import { userQueries, userMutations } from "./user/index.js";
-import { locationQueries, locationMutations } from "./location/index.js";
-import { courseQueries, courseMutations } from "./course/index.js";
+import { userQueries, userMutations } from "./user/index.ts";
+import { locationQueries, locationMutations } from "./location/index.ts";
+import { courseQueries, courseMutations } from "./course/index.ts";
 
 const resolvers = {
   Query: {

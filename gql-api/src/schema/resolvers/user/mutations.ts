@@ -1,12 +1,15 @@
 import userService from "../../../db/services/userService.js";
+import { MutationResolvers } from "../../../types.ts";
 
-const userMutations = {
+const userMutations: MutationResolvers = {
   createUser: async (_, args) => {
     try {
       let res = await userService.postUser(args.user);
       return res[0];
     } catch (err) {
-      throw new Error(`Failed to add user: ${err.message}`);
+      if(err instanceof Error){
+        throw new Error(`Failed to fetch courses: ${err.message}`);
+      }
     }
   },
   updateUser: async (_, args) => {
@@ -14,7 +17,9 @@ const userMutations = {
       let res = await userService.updateUser(args);
       return res[0];
     } catch (err) {
-      throw new Error(`Failed to update user: ${err.message}`);
+      if(err instanceof Error){
+        throw new Error(`Failed to fetch courses: ${err.message}`);
+      }
     }
   },
 };

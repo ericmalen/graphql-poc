@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "startJS": "node src/server.js",
-    "start": "tsx src/server.js"
+    "start": "tsx src/server.js",
+    "generate": "graphql-codegen"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,9 @@
   },
   "type": "module",
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.4",
+    "@graphql-codegen/typescript": "^4.1.3",
+    "@graphql-codegen/typescript-resolvers": "^4.4.2",
     "@types/node": "22.13.1",
     "cross-env": "7.0.3",
     "tsx": "4.19.2",

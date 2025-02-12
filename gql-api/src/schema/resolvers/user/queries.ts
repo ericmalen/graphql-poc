@@ -1,12 +1,15 @@
 import userService from "../../../db/services/userService.js";
+import { QueryResolvers } from "../../../types.ts";
 
-const userQueries = {
+const userQueries: QueryResolvers = {
   users: async (_, args) => {
     try {
       let users = await userService.getUsers();
       return users;
     } catch (err) {
-      throw new Error(`Failed to fetch user: ${err.message}`);
+      if(err instanceof Error){
+        throw new Error(`Failed to fetch courses: ${err.message}`);
+      }
     }
   },
   user: async (_, { id }) => {
@@ -14,7 +17,9 @@ const userQueries = {
       let res = await userService.getUserById(id);
       return res[0];
     } catch (err) {
-      throw new Error(`Failed to fetch user: ${err.message}`);
+      if(err instanceof Error){
+        throw new Error(`Failed to fetch courses: ${err.message}`);
+      }
     }
   },
 };

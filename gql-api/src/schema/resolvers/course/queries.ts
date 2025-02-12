@@ -1,6 +1,7 @@
 import axios from "axios";
+import { QueryResolvers } from "../../../types.ts";
 
-const courseQueries = {
+const courseQueries: QueryResolvers = {
   courses: async (_, args) => {
     try {
       let courses = await axios.get(
@@ -8,7 +9,9 @@ const courseQueries = {
       );
       return courses.data;
     } catch (err) {
-      throw new Error(`Failed to fetch courses: ${err.message}`);
+      if(err instanceof Error){
+        throw new Error(`Failed to fetch courses: ${err.message}`);
+      }
     }
   },
   course: async (_, { id }) => {
@@ -18,7 +21,9 @@ const courseQueries = {
       );
       return course.data;
     } catch (err) {
-      throw new Error(`Failed to fetch courses: ${err.message}`);
+      if(err instanceof Error){
+        throw new Error(`Failed to fetch courses: ${err.message}`);
+      }
     }
   },
 };
