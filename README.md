@@ -94,9 +94,8 @@ Once deployed, users can:
 ## To-Do
 
 - **Security**:
-  - Implement authentication mechanisms
-  - Apply defense-in-depth security measures
-  - Configure for Zero Trust architecture
+  - Implement authentication/authorization
+  - Explore ZTA, DiD
 - **Refactor Databases**:
   - Redesign both databases
 - **Database Schema Diagrams**:

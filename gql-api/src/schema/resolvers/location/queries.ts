@@ -1,6 +1,7 @@
 import axios from "axios";
+import { QueryResolvers } from "../../../types.ts";
 
-const locationQueries = {
+const locationQueries: QueryResolvers = {
   locations: async (_, args) => {
     try {
       let locations = await axios.get(
@@ -8,7 +9,9 @@ const locationQueries = {
       );
       return locations.data;
     } catch (err) {
-      throw new Error(`Failed to fetch courses: ${err.message}`);
+      if(err instanceof Error){
+        throw new Error(`Failed to fetch locations: ${err.message}`);
+      }
     }
   },
   location: async (_, { id }) => {
@@ -16,9 +19,11 @@ const locationQueries = {
       let location = await axios.get(
         `http://${process.env.TP_API_HOST}:3007/locations/${id}`
       );
-      return location.data;
+      return location.data[0];
     } catch (err) {
-      throw new Error(`Failed to fetch courses: ${err.message}`);
+      if(err instanceof Error){
+        throw new Error(`Failed to fetch location: ${err.message}`);
+      }
     }
   },
 };

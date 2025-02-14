@@ -5,13 +5,13 @@
 1. **Build the image**:
 
    ```bash
-   docker build -t tp-postgres .
+   docker build -t tpdb .
    ```
 
 2. **Run the container**:
 
    ```bash
-   docker run -d --name tp-postgres -p 5432:5432 tp-postgres
+   docker run -d --name tpdb -p 5432:5432 tpdb
    ```
 
 3. **Verify the container is running**:
@@ -23,7 +23,7 @@
 4. **Access the PostgreSQL terminal**:
 
    ```bash
-   docker exec -it tp-postgres psql -U user -d mydb
+   docker exec -it tp-postgres psql -U user -d tpdb
    ```
 
 5. **List tables to verify successful initialization**:

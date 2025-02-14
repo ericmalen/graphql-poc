@@ -11,6 +11,17 @@ const postCourse = async (req, res) => {
   }
 };
 
+const updateCourse = async (req, res) => {
+  const courseData = req.body;
+  try {
+    const response = await courseService.updateCourse(courseData);
+    res.send(response[0]);
+  } catch (err) {
+    console.log(err);
+    res.send({ error: err });
+  }
+};
+
 const getCourses = async (req, res) => {
   try {
     const allCourses = await courseService.getCourses();
@@ -38,4 +49,5 @@ export default {
   postCourse,
   getCourses,
   getCourseById,
+  updateCourse,
 };
