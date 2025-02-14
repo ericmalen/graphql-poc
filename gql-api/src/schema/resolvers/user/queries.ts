@@ -8,8 +8,10 @@ const userQueries: QueryResolvers = {
       return users;
     } catch (err) {
       if(err instanceof Error){
-        throw new Error(`Failed to fetch courses: ${err.message}`);
+        throw new Error(`Failed to fetch users: ${err.message}`);
       }
+      // check
+      throw new Error('An unknown error occurred while fetching the users');
     }
   },
   user: async (_, { id }) => {
@@ -18,8 +20,9 @@ const userQueries: QueryResolvers = {
       return res[0];
     } catch (err) {
       if(err instanceof Error){
-        throw new Error(`Failed to fetch courses: ${err.message}`);
+        throw new Error(`Failed to fetch user: ${err.message}`);
       }
+      throw new Error('An unknown error occurred while fetching the user');
     }
   },
 };

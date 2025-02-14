@@ -15,6 +15,14 @@ const postCourse = (course) => {
   )} RETURNING id`;
 };
 
+const updateCourse = ({ id, course }) => {
+  const columns = Object.keys(course).filter((key) => key !== "id");
+  return sql`UPDATE courses SET ${sql(
+    course,
+    ...columns
+  )} WHERE id = ${id} RETURNING id`;
+};
+
 const getCourseById = (id) => {
   return sql`SELECT * FROM courses WHERE id = ${id}`;
 };
@@ -32,6 +40,14 @@ const postLocation = (location) => {
   )} RETURNING id`;
 };
 
+const updateLocation = ({ id, location }) => {
+  const columns = Object.keys(location).filter((key) => key !== "id");
+  return sql`UPDATE locations SET ${sql(
+    location,
+    ...columns
+  )} WHERE id = ${id} RETURNING id`;
+};
+
 const getLocationById = (id) => {
   return sql`SELECT * FROM locations WHERE id = ${id}`;
 };
@@ -43,4 +59,6 @@ export default {
   getLocationById,
   postLocation,
   getLocations,
+  updateLocation,
+  updateCourse,
 };

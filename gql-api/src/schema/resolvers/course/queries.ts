@@ -19,10 +19,10 @@ const courseQueries: QueryResolvers = {
       let course = await axios.get(
         `http://${process.env.TP_API_HOST}:3007/courses/${id}`
       );
-      return course.data;
+      return course.data[0];
     } catch (err) {
       if(err instanceof Error){
-        throw new Error(`Failed to fetch courses: ${err.message}`);
+        throw new Error(`Failed to fetch course: ${err.message}`);
       }
     }
   },

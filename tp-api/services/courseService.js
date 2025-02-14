@@ -14,6 +14,20 @@ const postCourse = async (course) => {
   return dbResponse;
 };
 
+const updateCourse = async (course) => {
+  const dbResponse = await dbService.updateCourse(course);
+
+  if (!dbResponse) {
+    console.log("Failed to insert course into database.\n");
+
+    throw new Error("Course insertion failed.");
+  }
+
+  console.log("Course insertion successful!\n");
+
+  return dbResponse;
+};
+
 const getCourses = async () => {
   const courses = await dbService.getCourses();
 
@@ -40,4 +54,4 @@ const getCourseById = async (id) => {
   return course;
 };
 
-export default { postCourse, getCourses, getCourseById };
+export default { postCourse, getCourses, getCourseById, updateCourse };
