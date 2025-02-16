@@ -31,10 +31,9 @@ export default function RootLayout({
       >
         <SidebarProvider>
           <AppSidebar />
-          <SidebarTrigger />
+          <SidebarTrigger className="mt-1" />
           {children}
         </SidebarProvider>
-        {children}
       </body>
     </html>
   );
