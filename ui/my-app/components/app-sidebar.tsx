@@ -34,7 +34,7 @@ const items = [
   },
   {
     title: "Documents",
-    url: "#",
+    url: "/docs",
     icon: FileText,
   },
 ];
