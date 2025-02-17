@@ -35,7 +35,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-//import { auth0 } from "@/lib/auth0";
 import { useUser } from "@auth0/nextjs-auth0";
 
 // Menu items.
@@ -74,9 +73,6 @@ const log_buttons = {
     icon: LogOut,
   },
 };
-
-//const session = await auth0.getSession();
-//console.log(session);
 
 export function AppSidebar() {
   const { user, isLoading } = useUser();
