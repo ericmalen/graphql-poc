@@ -1,8 +1,21 @@
-import type { NextRequest } from "next/server";
+import type { NextRequest} from "next/server";
+import { NextResponse } from "next/server"
 import { auth0 } from "./lib/auth0";
 
 export async function middleware(request: NextRequest) {  
-  return await auth0.middleware(request);
+  const res = await auth0.middleware(request);
+
+  if (request.nextUrl.pathname.startsWith("/auth")) {
+    return res;
+  }
+
+  const session = await auth0.getSession(request);
+
+  if (request.nextUrl.pathname.startsWith("/gql") && !session) {
+    return NextResponse.redirect(new URL("/", request.nextUrl.origin));
+  }
+  
+  return res;
 }
 
 export const config = {
