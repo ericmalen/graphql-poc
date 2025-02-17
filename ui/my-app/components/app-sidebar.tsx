@@ -86,7 +86,7 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) =>
                 item.title === "GraphiQL" && !user ? (
-                  <TooltipProvider key={item.title}>
+                  <TooltipProvider key={item.title} delayDuration={0}>
                     <Tooltip>
                       <TooltipTrigger>
                         <SidebarMenuItem className="pointer-events-none">
