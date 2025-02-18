@@ -98,7 +98,7 @@ export function AppSidebar() {
                           </SidebarMenuButton>
                         </SidebarMenuItem>
                       </TooltipTrigger>
-                      <TooltipContent>
+                      <TooltipContent side="right">
                         <p>Sign in required: Please authenticate to proceed</p>
                       </TooltipContent>
                     </Tooltip>
