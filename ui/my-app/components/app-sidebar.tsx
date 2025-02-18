@@ -49,11 +49,6 @@ const items = [
     url: "/gql",
     icon: Aperture,
   },
-  {
-    title: "Documents",
-    url: "/docs",
-    icon: FileText,
-  },
 ];
 
 const log_buttons = {
