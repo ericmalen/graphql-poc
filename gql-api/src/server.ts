@@ -11,8 +11,7 @@ const checkJwt = auth({
   tokenSigningAlg: 'RS256'
 });
 
-// TODO
-//const checkScopes = requiredScopes('read:messages');
+const checkScopes = requiredScopes('access:graphiql');
 
 const yoga = createYoga({ schema });
 
@@ -25,7 +24,7 @@ app.use(cors({
   credentials: true,
 }));
 
-app.use(checkJwt);
+app.use(checkJwt, checkScopes);
 
 app.use(yoga.graphqlEndpoint, yoga);
 

@@ -41,7 +41,7 @@ export default function Home() {
           for authorization in the API. When the application sends an HTTP
           request to the API, it includes the Access token as Bearer token in
           the authorization header of the request. The API attempts to verify
-          the Access token with middleware, and if successful, can use different
+          the Access token with middleware, and if successful, can use
           middleware to protect endpoints. Protecting endpoints is done by
           checking the scope claim in the Access token's payload and using the
           provided scopes to control access to protected routes.
@@ -63,11 +63,11 @@ export default function Home() {
         <p className="text-xl text-center">
           Now try logging in with{" "}
           <code className="bg-gray-200 px-2 py-1 rounded font-mono">
-            email:none@none.com password:none123!@#
+            email:user@user.com password:test123!@#
           </code>{" "}
-          and visit the GraphiQL page. Those credentials have the "access:none"
-          scope and a "404: Unauthorized Access" response is returned by the
-          API.
+          and visit the GraphiQL page. Those credentials do not have the
+          "access:graphiql" scope and a "401: Unauthorized Access" response is
+          returned by the API.
         </p>
       </div>
     </main>
