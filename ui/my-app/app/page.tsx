@@ -53,14 +53,19 @@ export default function Home() {
         </p>
         <p className="text-xl text-center p-10">
           Login with{" "}
-          <b>&#123;email: test@test.com, password: test123!@#&#125;</b> and
-          visit the GraphiQL page. Those credentials have the "access:graphiql"
-          scope, authorizing the application to access the API.
+          <code className="bg-gray-200 px-2 py-1 rounded font-mono">
+            email:test@test.com password:test123!@#
+          </code>{" "}
+          and visit the GraphiQL page. Those credentials have the
+          "access:graphiql" scope, authorizing the application to access the
+          API.
         </p>
         <p className="text-xl text-center">
           Now try logging in with{" "}
-          <b>&#123;email: none@none.com, password: none123!@#&#125;</b> and
-          visit the GraphiQL page. Those credentials have the "access:none"
+          <code className="bg-gray-200 px-2 py-1 rounded font-mono">
+            email:none@none.com password:none123!@#
+          </code>{" "}
+          and visit the GraphiQL page. Those credentials have the "access:none"
           scope and a "404: Unauthorized Access" response is returned by the
           API.
         </p>
