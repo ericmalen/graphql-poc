@@ -66,8 +66,11 @@ export default function Home() {
             email:user@user.com password:test123!@#
           </code>{" "}
           and visit the GraphiQL page. Those credentials do not have the
-          "access:graphiql" scope and a "401: Unauthorized Access" response is
-          returned by the API.
+          "access:graphiql" scope{" "}
+          <s>
+            and a "401: Unauthorized Access" response is returned by the API.
+          </s>{" "}
+          and the api will not return data to the application.
         </p>
       </div>
     </main>
