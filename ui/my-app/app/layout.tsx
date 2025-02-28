@@ -6,7 +6,6 @@ import "./globals.css";
 import { auth0 } from "@/lib/auth0";
 
 const session = await auth0.getSession();
-console.log(session);
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
