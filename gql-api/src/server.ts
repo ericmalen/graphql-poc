@@ -1,30 +1,24 @@
 import express from 'express';
 import { createYoga } from "graphql-yoga";
 import { schema } from "./schema.ts";
-import {auth, requiredScopes} from 'express-oauth2-jwt-bearer';
 import cors from 'cors';
+import {validateAccessToken, checkScopes} from "./middleware/auth0.middleware.ts"
+import dotenv from "dotenv";
 
-// Authorization middleware - Access Token must exist and be verified against the Auth0 JSON Web Key Set.
-const checkJwt = auth({
-  audience: 'http://localhost:4000/graphql',
-  issuerBaseURL: `https://dev-vigt6on5fu4xcryn.us.auth0.com/`,
-  tokenSigningAlg: 'RS256'
-});
-
-const checkScopes = requiredScopes('access:graphiql');
+dotenv.config();
 
 const yoga = createYoga({ schema });
 
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000',
-  methods: ['GET', 'POST'],
+  origin: process.env.AUTH0_BASE_URL,
+  methods: ['GET', 'POST', 'PUT'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 }));
 
-app.use(checkJwt, checkScopes);
+app.use(validateAccessToken, checkScopes);
 
 app.use(yoga.graphqlEndpoint, yoga);
 
