@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="flex grow flex-col my-7 mr-7">
       <div className="flex w-full items-center justify-center">
-        <p className="text-4xl mb-7">GraphQL POC</p>
+        <p className="text-3xl mb-7">GraphQL POC</p>
       </div>
       <Separator />
       <div className="flex w-full h-1/6 items-center justify-center">
@@ -27,7 +27,7 @@ export default function Home() {
         </p>
       </div>
       <div className="w-full items-center justify-center px-20">
-        <p className="text-xl text-center">
+        <p className="text-xl text-center mt-5">
           — <b>Try it yourself</b> —
         </p>
         <p className="text-xl text-center p-10">
@@ -48,7 +48,7 @@ export default function Home() {
         </p>
       </div>
       <div className="w-full items-center justify-center px-20">
-        <p className="text-xl text-center">
+        <p className="text-xl text-center mt-5">
           — <b>Try it yourself</b> —
         </p>
         <p className="text-xl text-center p-10">
@@ -66,7 +66,7 @@ export default function Home() {
             email:user@user.com password:test123!@#
           </code>{" "}
           and visit the GraphiQL page. Those credentials do not have the
-          "access:graphiql" scope, and an "Access Denied" page will loaded.
+          "access:graphiql" scope and the request is denied.
         </p>
       </div>
     </main>

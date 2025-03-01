@@ -2,7 +2,9 @@ import express from 'express';
 import { createYoga } from "graphql-yoga";
 import { schema } from "./schema.ts";
 import cors from 'cors';
-import {validateAccessToken, checkScopes} from "./middleware/auth0.middleware.ts"
+import {validateAccessToken, checkGraphiQLScope} from "./middleware/auth0.middleware.ts"
+import { errorHandler } from './middleware/error.middleware.ts';
+import { notFoundHandler } from './middleware/not-found.middleware.ts';
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -18,9 +20,15 @@ app.use(cors({
   credentials: true,
 }));
 
-app.use(validateAccessToken, checkScopes);
+app.use(validateAccessToken);
+
+app.use(checkGraphiQLScope);
+
+app.use(errorHandler);
 
 app.use(yoga.graphqlEndpoint, yoga);
+
+app.use(notFoundHandler);
 
 app.listen(4000, () => {
   console.info("Server is running on http://localhost:4000/graphql");

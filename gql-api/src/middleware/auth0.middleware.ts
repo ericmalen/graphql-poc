@@ -10,7 +10,4 @@ export const validateAccessToken  = auth({
 });
 
 // Checks for the "access:graphiql" scope
-export const checkScopes = requiredScopes('access:graphiql');
-
-// TODO
-// Add proper error handling
+export const checkGraphiQLScope = requiredScopes('access:graphiql');
